@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EURUS: Турніри по кіберспорту</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="img/logoEURUS.ico" type="images/x-icon">
+</head>
+<body>
+ <div id="zxc">
+ <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-targer=".navbar-collapse">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="#"><img src="img/logoEURUS.png" width="130" style="position:absolute;top:5px" alt="logo" title="EURUS"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href ="index.html">Головна</a></li>
+                 <li class="active"><a href ="tournament.html">Турніри</a></li>
+                 <li><a href ="players.html">Гравці</a></li>
+                 <li><a href ="teams.html">Команди</a></li>
+                 <li><a href ="about.html">Про проект</a></li>
+                 <li><a href ="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                 <li><a href ="registration.html">Реєстрація</a></li>
+                 <li><a href ="auth.html">Увійти</a></li>
+             </ul>
+         </div>
+     </div>
+ </div>
+ <button type="button" class="btn" onclick="location.href='tourCup.html'">Повернутися назад</button>
+<div id="zxc">
+ <div class="header1" style="text-align: center">
+    <h1 id="title">КУБОК</h1>
+    <button type="checkbox" id="myCheck" onclick="myFunction()">Грати</button>
+  </div>
+  <script type="text/javascript" src="file.json"></script>
+  <script>
+    var teams = [
+      {
+        team_id: 1,
+        team_name: "Natus Vincere",
+      },
+      {
+        team_id: 2,
+        team_name: "Virtus Pro",
+      },
+      {
+        team_id: 3,
+        team_name: "Team Empire",
+      },
+      {
+        team_id: 4,
+        team_name: "Team Liquid",
+      },
+      {
+        team_id: 5,
+        team_name: "OG",
+      },
+      {
+        team_id: 6,
+        team_name: "LGD.PSG",
+      },
+      {
+        team_id: 7,
+        team_name: "Alliance",
+      },
+      {
+        team_id: 8,
+        team_name: "Team Nigma",
+      },
+      {
+        team_id: 9,
+        team_name: "Team Spirit",
+      },
+      {
+        team_id: 10,
+        team_name: "ViKin.gg",
+      },
+      {
+        team_id: 11,
+        team_name: "Thunder Predator",
+      },
+      {
+        team_id: 12,
+        team_name: "TNC Pro Team",
+      },
+      {
+        team_id: 13,
+        team_name: "PuckChamp",
+      },
+      {
+        team_id: 14,
+        team_name: "EHOME",
+      },
+      {
+        team_id: 15,
+        team_name: "Team Unique",
+      },
+      {
+        team_id: 16,
+        team_name: "IG Vitality",
+      }
+    ];
+
+    function randomInteger(min, max) {
+      let rand = min - 0.5 + Math.random() * (max - min + 1);
+      return Math.round(rand);
+    }
+
+    var games = teams.slice();
+
+    function shuffle(arr) {
+      var j, temp;
+      for (var i = arr.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+      }
+      return arr;
+    }
+
+    shuffle(games);
+
+    var click_num = 0;
+
+    function myFunction() {
+      if (click_num == 0) {
+        document.getElementById("title").innerHTML =
+          "Раунд" + click_num + ": Турнірна сітка ";
+
+        for (var i = 0; i < teams.length; i++) {
+          var team_id = i + 1;
+          document.getElementById("name_1_" + team_id).innerHTML =
+            games[i].team_name;
+        }
+      }
+
+      if (click_num == 1) {
+        document.getElementById("title").innerHTML =
+          "Раунд" + click_num + ": 1/8 Фіналу ";
+
+        for (var i = 0; i < 8; i++) {
+          var game_id = i + 1;
+
+          var team_id_1 = game_id * 2 - 1;
+          var team_id_2 = game_id * 2;
+
+          var team_name_1 = document.getElementById(
+            "name_" + click_num + "_" + team_id_1
+          ).innerHTML;
+          var team_name_2 = document.getElementById(
+            "name_" + click_num + "_" + team_id_2
+          ).innerHTML;
+
+          var game_result = randomInteger(1, 2);
+
+          if (game_result == 1) {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_1;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("winner");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("loser");
+          } else {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_2;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("loser");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("winner");
+          }
+        }
+      }
+
+      if (click_num == 2) {
+        document.getElementById("title").innerHTML =
+          "Раунд" + click_num + ": 1/4 Фіналу";
+
+        for (var i = 0; i < 4; i++) {
+          var game_id = i + 1;
+
+          var team_id_1 = game_id * 2 - 1;
+          var team_id_2 = game_id * 2;
+
+          var team_name_1 = document.getElementById(
+            "name_" + click_num + "_" + team_id_1
+          ).innerHTML;
+          var team_name_2 = document.getElementById(
+            "name_" + click_num + "_" + team_id_2
+          ).innerHTML;
+
+          var game_result = randomInteger(1, 2);
+
+          if (game_result == 1) {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_1;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("winner");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("loser");
+          } else {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_2;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("loser");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("winner");
+          }
+        }
+      }
+
+      if (click_num == 3) {
+        document.getElementById("title").innerHTML =
+          "Раунд" + click_num + ": 1/2 Фіналу ";
+
+        for (var i = 0; i < 2; i++) {
+          var game_id = i + 1;
+
+          var team_id_1 = game_id * 2 - 1;
+          var team_id_2 = game_id * 2;
+
+          var team_name_1 = document.getElementById(
+            "name_" + click_num + "_" + team_id_1
+          ).innerHTML;
+          var team_name_2 = document.getElementById(
+            "name_" + click_num + "_" + team_id_2
+          ).innerHTML;
+
+          var game_result = randomInteger(1, 2);
+
+          if (game_result == 1) {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_1;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("winner");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("loser");
+          } else {
+            document.getElementById(
+              "name_" + (click_num + 1) + "_" + game_id
+            ).innerHTML = team_name_2;
+            document
+              .getElementById("result_" + click_num + "_" + team_id_1)
+              .classList.add("loser");
+            document
+              .getElementById("result_" + click_num + "_" + team_id_2)
+              .classList.add("winner");
+          }
+        }
+      }
+
+      if (click_num == 4) {
+        var game_id = 1;
+
+        var team_id_1 = game_id * 2 - 1;
+        var team_id_2 = game_id * 2;
+
+        var team_name_1 = document.getElementById(
+          "name_" + click_num + "_" + team_id_1
+        ).innerHTML;
+        var team_name_2 = document.getElementById(
+          "name_" + click_num + "_" + team_id_2
+        ).innerHTML;
+
+        console.log(game_id, team_id_1, team_id_2, team_name_1, team_name_2);
+
+        var game_result = randomInteger(1, 2);
+
+        if (game_result == 1) {
+          document
+            .getElementById("result_" + click_num + "_" + team_id_1)
+            .classList.add("winner");
+          document
+            .getElementById("result_" + click_num + "_" + team_id_2)
+            .classList.add("loser");
+          document.getElementById("title").innerHTML =
+            "Раунд" + click_num + ":  Final " + team_name_1 + " WINNER";
+          document.getElementById("myCheck").style.display = "none";
+        } else {
+          document
+            .getElementById("result_" + click_num + "_" + team_id_1)
+            .classList.add("loser");
+          document
+            .getElementById("result_" + click_num + "_" + team_id_2)
+            .classList.add("winner");
+          document.getElementById("title").innerHTML =
+            "Раунд" + click_num + ":  Final " + team_name_2 + " WINNER";
+          document.getElementById("myCheck").style.display = "none";
+        }
+      }
+
+      click_num = click_num + 1;
+    }
+  </script>
+
+  <div class="bracket-container">
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_1_1">
+        <div class="bracket-team" id="result_1_1">
+          <div class="bracket-name" id="name_1_1"></div>
+          <div class="bracket-score" id="score_1_1"></div>
+        </div>
+        <div class="bracket-team" id="result_1_2">
+          <div class="bracket-name" id="name_1_2"></div>
+          <div class="bracket-score" id="score_1_2"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_2">
+        <div class="bracket-team" id="result_1_3">
+          <div class="bracket-name" id="name_1_3"></div>
+          <div class="bracket-score" id="score_1_3"></div>
+        </div>
+        <div class="bracket-team" id="result_1_4">
+          <div class="bracket-name" id="name_1_4"></div>
+          <div class="bracket-score" id="score_1_4"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_3">
+        <div class="bracket-team" id="result_1_5">
+          <div class="bracket-name" id="name_1_5"></div>
+          <div class="bracket-score" id="score_1_5"></div>
+        </div>
+        <div class="bracket-team" id="result_1_6">
+          <div class="bracket-name" id="name_1_6"></div>
+          <div class="bracket-score" id="score_1_6"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_4">
+        <div class="bracket-team" id="result_1_7">
+          <div class="bracket-name" id="name_1_7"></div>
+          <div class="bracket-score" id="score_1_7"></div>
+        </div>
+        <div class="bracket-team" id="result_1_8">
+          <div class="bracket-name" id="name_1_8"></div>
+          <div class="bracket-score" id="score_1_8"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_2_1">
+        <div class="bracket-team" id="result_2_1">
+          <div class="bracket-name" id="name_2_1"></div>
+          <div class="bracket-score" id="score_2_1"></div>
+        </div>
+        <div class="bracket-team" id="result_2_2">
+          <div class="bracket-name" id="name_2_2"></div>
+          <div class="bracket-score" id="score_2_2"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_2_2">
+        <div class="bracket-team" id="result_2_3">
+          <div class="bracket-name" id="name_2_3"></div>
+          <div class="bracket-score" id="score_2_3"></div>
+        </div>
+        <div class="bracket-team" id="result_2_4">
+          <div class="bracket-name" id="name_2_4"></div>
+          <div class="bracket-score" id="score_2_4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_3_1">
+        <div class="bracket-team" id="result_3_1">
+          <div class="bracket-name" id="name_3_1"></div>
+          <div class="bracket-score" id="score_3_1"></div>
+        </div>
+        <div class="bracket-team" id="result_3_2">
+          <div class="bracket-name" id="name_3_2"></div>
+          <div class="bracket-score" id="score_3_2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_4_1">
+        <div class="bracket-team" id="result_4_1">
+          <div class="bracket-name" id="name_4_1"></div>
+          <div class="bracket-score" id="score_4_1"></div>
+        </div>
+        <div class="bracket-team" id="result_4_2">
+          <div class="bracket-name" id="name_4_2"></div>
+          <div class="bracket-score" id="score_4_2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_3_2">
+        <div class="bracket-team" id="result_3_3">
+          <div class="bracket-score" id="score_3_3"></div>
+          <div class="bracket-name" id="name_3_3"></div>
+        </div>
+        <div class="bracket-team" id="result_3_4">
+          <div class="bracket-score" id="score_3_4"></div>
+          <div class="bracket-name" id="name_3_4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_2_3">
+        <div class="bracket-team" id="result_2_5">
+          <div class="bracket-score" id="score_2_5"></div>
+          <div class="bracket-name" id="name_2_5"></div>
+        </div>
+        <div class="bracket-team" id="result_2_6">
+          <div class="bracket-score" id="score_2_6"></div>
+          <div class="bracket-name" id="name_2_6"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_2_4">
+        <div class="bracket-team" id="result_2_7">
+          <div class="bracket-score" id="score_2_7"></div>
+          <div class="bracket-name" id="name_2_7"></div>
+        </div>
+        <div class="bracket-team" id="result_2_8">
+          <div class="bracket-score" id="score_2_8"></div>
+          <div class="bracket-name" id="name_2_8"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bracket-level">
+      <div class="bracket-matchup" id="game_1_5">
+        <div class="bracket-team" id="result_1_9">
+          <div class="bracket-score" id="score_1_9"></div>
+          <div class="bracket-name" id="name_1_9"></div>
+        </div>
+        <div class="bracket-team" id="result_1_10">
+          <div class="bracket-score" id="score_1_10"></div>
+          <div class="bracket-name" id="name_1_10"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_6">
+        <div class="bracket-team" id="result_1_11">
+          <div class="bracket-score" id="score_1_11"></div>
+          <div class="bracket-name" id="name_1_11"></div>
+        </div>
+        <div class="bracket-team" id="result_1_12">
+          <div class="bracket-score" id="score_1_12"></div>
+          <div class="bracket-name" id="name_1_12"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_7">
+        <div class="bracket-team" id="result_1_13">
+          <div class="bracket-score" id="score_1_13"></div>
+          <div class="bracket-name" id="name_1_13"></div>
+        </div>
+        <div class="bracket-team" id="result_1_14">
+          <div class="bracket-score" id="score_1_14"></div>
+          <div class="bracket-name" id="name_1_14"></div>
+        </div>
+      </div>
+      <div class="bracket-matchup" id="game_1_8">
+        <div class="bracket-team" id="result_1_15">
+          <div class="bracket-score" id="score_1_15"></div>
+          <div class="bracket-name" id="name_1_15"></div>
+        </div>
+        <div class="bracket-team" id="result_1_16">
+          <div class="bracket-score" id="score_1_16"></div>
+          <div class="bracket-name" id="name_1_16"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="lg1">
+    <div class="container">
+        <div class="row centered">
+            <h4>Трансляції</h4>
+            <iframe src="https://player.twitch.tv/?channel=aragonm&parent=yartretyak.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+        </div>
+    </div>
+    <div id="r">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>Site by Tretyak Yaroslav</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="f">
+        <div class="container">
+            <div class="row centered">
+                <a href="https://www.instagram.com/yar_tret/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.facebook.com/yar.tret.7/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.twitch.tv/aragonm"><i class="fa fa-twitch"></i></a>
+                <h3>Copyright © 2021-2021</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/vanta.net.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

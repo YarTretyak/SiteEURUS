@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EURUS: Турніри по кіберспорту</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="img/logoEURUS.ico" type="images/x-icon">
+</head>
+<body>
+ <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-targer=".navbar-collapse">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="#"><img src="img/logoEURUS.png" width="130" style="position:absolute;top:5px" alt="logo" title="EURUS"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href ="index.html">Головна</a></li>
+                 <li class="active"><a href ="tournament.html">Турніри</a></li>
+                 <li><a href ="players.html">Гравці</a></li>
+                 <li><a href ="teams.html">Команди</a></li>
+                 <li><a href ="about.html">Про проект</a></li>
+                 <li><a href ="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                 <li><a href ="registration.html">Реєстрація</a></li>
+                 <li><a href ="auth.html">Увійти</a></li>
+             </ul>
+         </div>
+     </div>
+ </div>
+
+
+<div id="qwe">
+ <script>
+    var roundNumber = 0;
+    var names = ["Natus Vincere", 
+                "Virtus Pro", 
+                "Team Spirit", 
+                "Team Liquid",
+                "Team Empire",
+                "OG",
+                "Team Nigma",
+                "Alliance"];
+    var players = [];
+    
+    for(i = 0; i < names.length; i++)
+    {
+        var player = {
+            id:i,
+            name:names[i],
+            wins:0,
+            losses:0,
+            draws:0,
+            points:0
+        };
+        
+        players[i] = player;
+    }
+    
+    
+    $(document).ready(function()
+    {
+        $("#round").html("Тур " + roundNumber);
+    });
+    function generateFirstRound()
+    {
+        var seeds = range(0,7);
+        for(i = 0; i < 4; i++)
+        {
+            var seed1 = Math.floor(Math.random() * seeds.length);
+            var player1 = players[seeds[seed1]];
+            seeds.splice(seed1,1);
+            var seed2 = Math.floor(Math.random() * seeds.length);
+            var player2 = players[seeds[seed2]];
+            seeds.splice(seed2,1);
+            
+            $("#"+ ((2*i) + 1)).val(player1.name);
+            $("#"+ ((2*i) + 1)).attr("data-playerId",player1.id);
+            $("#"+ ((2*i) + 2)).val(player2.name);
+            $("#"+ ((2*i) + 2)).attr("data-playerId",player2.id);
+            
+        }
+        
+    }
+    
+    function generateMatches()
+    {
+        if(roundNumber == 0)
+        {
+            generateFirstRound();	
+        }
+        else
+        {
+            var sorted = sortByPoints(players);
+            
+            $("#1").val(players[sorted[0]].name);
+            $("#1").attr("data-playerId",players[sorted[0]].id);
+            $("#2").val(players[sorted[1]].name);
+            $("#2").attr("data-playerId",players[sorted[1]].id);
+            $("#3").val(players[sorted[2]].name);
+            $("#3").attr("data-playerId",players[sorted[2]].id);
+            $("#4").val(players[sorted[3]].name);
+            $("#4").attr("data-playerId",players[sorted[3]].id);
+            $("#5").val(players[sorted[4]].name);
+            $("#5").attr("data-playerId",players[sorted[4]].id);
+            $("#6").val(players[sorted[5]].name);
+            $("#6").attr("data-playerId",players[sorted[5]].id);
+            $("#7").val(players[sorted[6]].name);
+            $("#7").attr("data-playerId",players[sorted[6]].id);
+            $("#8").val(players[sorted[7]].name);
+            $("#8").attr("data-playerId",players[sorted[7]].id);
+        }
+        
+        roundNumber++;
+        
+        $("#round").html("Тур " + roundNumber);
+        $("input[type='radio']").prop( "checked", false );
+        
+    }
+    
+    function updateStandings()
+    {
+        var sorted = sortByPoints(players);
+        $("#standings").html("");
+        $("#standings").append("<tr><th>Місце</th><th>Ім'я</th><th>Очки</th><th>Перемоги</th><th>Поразки</th><th>Нічиї</th></tr>");
+        
+        for(i = 1; i <= sorted.length; i++)
+        {
+            $("#standings").append("<tr><td>" + i + "</td><td>" + players[sorted[i-1]].name + "</td><td>" + players[sorted[i-1]].points + "</td><td>" + players[sorted[i-1]].wins + "</td><td>" + players[sorted[i-1]].losses + "</td><td>" + players[sorted[i-1]].draws + "</td></tr>");
+            //$("#place" + i).html(players[sorted[i-1]].name + " " +players[sorted[i-1]].points);
+        }
+    }
+    
+    function sortByPoints(arr)
+    {
+        var sorted = [];
+        
+        for(j = 0; j < players.length; j++)
+        {
+            var highest = -1;
+            for(i = 0; i < players.length; i++)
+            {
+                if(sorted.indexOf(i) == -1)
+                {
+                    if(highest == -1)
+                    {
+                        highest = players[i].id;
+                    }
+                    
+                    if(players[highest].points < players[i].points)
+                    {
+                        highest = i;
+                    }
+                }
+            }
+            sorted.push(highest);
+        }
+        
+        return sorted;
+    }
+    
+    function updateScores()
+    {
+        for(i = 1; i <5; i++)
+        {
+            var topBracket = (2*i) - 1;
+            var botBracket = (2*i);
+            var player1id = $("#"+topBracket).attr('data-playerId');
+            var player2id = $("#"+botBracket).attr('data-playerId');
+            var game1outcome = $('input[name=' + i + '-1]:checked').val();
+            var game2outcome = $('input[name=' + i + '-2]:checked').val();
+            var game3outcome = $('input[name=' + i + '-3]:checked').val();
+            
+            if(game1outcome == topBracket)
+            {
+                players[player1id].wins++;
+                players[player1id].points+=3;
+                players[player2id].losses++;
+            }
+            else if(game1outcome == botBracket)
+            {
+                players[player2id].wins++;
+                players[player2id].points+=3;
+                players[player1id].losses++;
+            }
+            else if(game1outcome == 0)
+            {
+                players[player1id].draws++;
+                players[player2id].draws++;
+                players[player1id].points++;
+                players[player2id].points++;
+            }
+            
+            if(game2outcome == topBracket)
+            {
+                players[player1id].wins++;
+                players[player1id].points+=3;
+                players[player2id].losses++;
+            }
+            else if(game2outcome == botBracket)
+            {
+                players[player2id].wins++;
+                players[player2id].points+=3;
+                players[player1id].losses++;
+            }
+            else if(game2outcome == 0)
+            {
+                players[player1id].draws++;
+                players[player2id].draws++;
+                players[player1id].points++;
+                players[player2id].points++;
+            }
+            
+            if(game3outcome == topBracket)
+            {
+                players[player1id].wins++;
+                players[player1id].points+=3;
+                players[player2id].losses++;
+            }
+            else if(game3outcome == botBracket)
+            {
+                players[player2id].wins++;
+                players[player2id].points+=3;
+                players[player1id].losses++;
+            }
+            else if(game3outcome == 0)
+            {
+                players[player1id].draws++;
+                players[player2id].draws++;
+                players[player1id].points++;
+                players[player2id].points++;
+            }
+            
+        }
+        
+        updateStandings();
+        
+        
+    }
+    
+    function range(head,tail)
+    {
+        var range = [];
+        if(head <= tail)
+        {
+            for(i = head; i <= tail; i++)
+            {
+                range.push(i);
+            }
+        }
+        
+        return range;
+    }
+    
+                
+    
+</script>
+
+</div>
+
+</head>
+<body>
+<h1 id="round"></h1>
+<div id="container">
+    <h2>Матч 1:</h2>
+    <table>
+    <tr><td >Гравці</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="1"/></td><td><input type="radio" name="1-1" value="1"/></td><td><input type="radio" name="1-2" value="1"/></td><td><input type="radio" name="1-3" value="1"/></td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="2"/></td><td><input type="radio" name="1-1" value="2"/></td><td><input type="radio" name="1-2" value="2"/></td><td><input type="radio" name="1-3" value="2"/></td></tr>
+    <tr><td style="text-align:left"><b>Нічия:</b></td><td><input type="radio" name="1-1" value="0"/></td><td><input type="radio" name="1-2" value="0"/></td><td><input type="radio" name="1-3" value="0"/></td></tr>
+    </table>
+    
+    <h2>Матч 2:</h2>
+    <table>
+    <tr><td >Гравці</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="3"/></td><td><input type="radio" name="2-1" value="3"/></td><td><input type="radio" name="2-2" value="3"/></td><td><input type="radio" name="2-3" value="3"/></td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="4"/></td><td><input type="radio" name="2-1" value="4"/></td><td><input type="radio" name="2-2" value="4"/></td><td><input type="radio" name="2-3" value="4"/></td></tr>
+    <tr><td style="text-align:left"><b>Нічия:</b></td><td><input type="radio" name="2-1" value="0"/></td><td><input type="radio" name="2-2" value="0"/></td><td><input type="radio" name="2-3" value="0"/></td></tr>
+    </table>
+    
+    <h2>Матч 3:</h2>
+    <table>
+    <tr><td >Гравці</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="5"/></td><td><input type="radio" name="3-1" value="5"/></td><td><input type="radio" name="3-2" value="5"/></td><td><input type="radio" name="3-3" value="5"/></td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="6"/></td><td><input type="radio" name="3-1" value="6"/></td><td><input type="radio" name="3-2" value="6"/></td><td><input type="radio" name="3-3" value="6"/></td></tr>
+    <tr><td style="text-align:left"><b>Нічия:</b></td><td> <input type="radio" name="3-1" value="0"/></td><td><input type="radio" name="3-2" value="0"/></td><td><input type="radio" name="3-3" value="0"/></td></tr>
+    </table>
+    
+    <h2>Матч 4:</h2>
+    <table>
+    <tr><td>Гравці</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="7"/></td><td><input type="radio" name="4-1" value="7"/></td><td><input type="radio" name="4-2" value="7"/></td><td><input type="radio" name="4-3" value="7"/></td></tr>
+    <tr><td><input data-playerId="-1" type="text" class="seed" id="8"/></td><td><input type="radio" name="4-1" value="8"/></td><td><input type="radio" name="4-2" value="8"/></td><td><input type="radio" name="4-3" value="8"/></td></tr>
+    <tr><td style="text-align:left"><b>Нічия:</b></td><td> <input type="radio" name="4-1" value="0"/></td><td><input type="radio" name="4-2" value="0"/></td><td><input type="radio" name="4-3" value="0"/></td></tr>
+    </table>
+    
+    <br/>
+    <input type="button" value="Повернутися назад" onclick="location.href='tour.html'"/>
+    <input type="button" value="Оновити результати" onclick="updateScores()"/>
+    <input type="button" value="Новий раунд" onclick="generateMatches()"/>
+    <button type="button" data-toggle="modal" data-target="#standingsModal">Турнірна таблиця</button>
+    
+    <br/>
+    
+    
+<div id="standingsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Турнірна таблиця</h2>
+            </div>
+            <div class="modal-body">					
+                <table id="standings">
+                </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    <div>		
+    </div>
+</div>
+
+<div id="lg1">
+    <div class="container">
+        <div class="row centered">
+            <h4>Трансляції</h4>
+            <iframe src="https://player.twitch.tv/?channel=aragonm&parent=yartretyak.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+        </div>
+    </div>
+    <div id="r">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>Site by Tretyak Yaroslav</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="f">
+        <div class="container">
+            <div class="row centered">
+                <a href="https://www.instagram.com/yar_tret/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.facebook.com/yar.tret.7/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.twitch.tv/aragonm"><i class="fa fa-twitch"></i></a>
+                <h3>Copyright © 2021-2021</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/vanta.net.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

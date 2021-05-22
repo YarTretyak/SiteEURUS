@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EURUS: Турніри по кіберспорту</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="img/logoEURUS.ico" type="images/x-icon">
+</head>
+<body>
+ <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-targer=".navbar-collapse">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="#"><img src="img/logoEURUS.png" width="130" style="position:absolute;top:5px" alt="logo" title="EURUS"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href ="index.html">Головна</a></li>
+                 <li><a href ="tournament.html">Турніри</a></li>
+                 <li class="active"><a href ="players.html">Гравці</a></li>
+                 <li><a href ="teams.html">Команди</a></li>
+                 <li><a href ="about.html">Про проект</a></li>
+                 <li><a href ="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                 <li><a href ="registration.html">Реєстрація</a></li>
+                 <li><a href ="auth.html">Увійти</a></li>
+             </ul>
+         </div>
+     </div>
+ </div>
+ <div class="container container-body">
+    <div class="row">
+      <div class="span12">
+          
+      </div>
+    </div>
+    <div class="row">
+      
+               
+          <div class="span12">
+              
+        
+
+        <div> <!--hero-unit -->
+          
+<div id="system-message-container">
+</div>
+        </div>
+        <div>
+          <h1>Список лідерів</h1>
+<form action="/hof" method="post" name="adminForm" id="adminForm">
+  <fieldset id="filter-bar">
+      <div class="filter-select fltrt">
+          <select name="filter_usergroup" class="inputbox" onchange="this.form.submit()">
+              <option value="1">Одиночні (1х1)</option>
+<option value="2">Командні (2х2, 5x5)</option>
+          </select>
+          <select name="filter_gamecategoryid" class="inputbox" onchange="this.form.submit()">
+<option value="1">Dota 2</option>
+<option value="2">Rainbow six siege</option>
+<option value="3">CS:GO</option>
+          </select>
+      </div>
+  </fieldset>
+  <div class="clr"> </div>
+
+<table class="adminlist table table-striped table-condensed">
+<tr>
+<th class="tdcenter td200">Гравець</th>
+<th>Турніри</th>
+<th>Зустрічі</th>
+<th>Процент перемог зустрічі/ігри</th>
+<th>Перемоги</th>
+<th>Поразки</th>
+<th>Ігри:<br/>виграні/програні</th>
+<th>Технічні<br/>перемоги/поразки</th>
+<th>Дисквалі<br/>фікації</th>
+</tr>
+  <tr>
+      <td>1038&nbsp;<i class = "flag-UA" title="Ukraine"></i><a href="/component/comprofiler/userprofile/171" target="_blank">Aragon</a></td>
+      <td class="tdright">3</td>
+      <td class="tdright">13</td>		
+      <td class="tdright">11 / 2</td>
+      <td class="tdright">11</td>
+      <td class="tdright">2</td>
+      <td class="tdcenter">22: 18 / 4</td>
+      <td class="tdcenter">2: 2 / 0 </td>
+      <td class="tdright">0</td>
+  </tr>
+  <tr>
+    <td>803&nbsp;<i class = "flag-UA" title="Ukraine"></i><a href="/component/comprofiler/userprofile/171" target="_blank">Alastor</a></td>
+    <td class="tdright">3</td>
+    <td class="tdright">13</td>		
+    <td class="tdright">8 / 5</td>
+    <td class="tdright">8</td>
+    <td class="tdright">5</td>
+    <td class="tdcenter">22: 14 / 8</td>
+    <td class="tdcenter">0: 0 / 0 </td>
+    <td class="tdright">0</td>
+</tr>
+  <tfoot>
+  <tr>
+      <td colspan="9">
+          <div class="joomla_container"><div class="pagination">
+
+<div class="limit">Кількість рядків:<select id="limit" name="limit" class="inputbox" size="1" onchange="this.form.submit()">
+  <option value="5">5</option>
+  <option value="10" selected="selected">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+  <option value="25">25</option>
+  <option value="30">30</option>
+</select>
+</div><div class="button2-right off"><div class="start"><span>На початок</span></div></div><div class="button2-right off"><div class="prev"><span>Назад</span></div></div>
+<div class="button2-left"><div class="page"><span>1</span><a href="#" title="2" onclick="document.adminForm.limitstart.value=20; Joomla.submitform();return false;">2</a>
+</div></div><div class="button2-left"><div class="next"><a href="#" title="Вперед" onclick="document.adminForm.limitstart.value=20; Joomla.submitform();return false;">Вперед</a></div></div><div class="button2-left"><div class="end"><a href="#" title="В кінець" onclick="document.adminForm.limitstart.value=620; Joomla.submitform();return false;">В кінець</a></div></div>
+<div class="limit">Сторінка 1 из 2</div>
+<input type="hidden" name="limitstart" value="0" />
+</div></div>		</td>
+  </tr>		
+  </tfoot>  
+</table>
+</form>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Day of the week', 'Games']
+                    ,['Monday', 642]
+                    ,['Tuesday', 544]
+                    ,['Wednesday', 455]
+                    ,['Thursday', 458]
+                    ,['Friday', 372]
+                    ,['Saturday', 669]
+                    ,['Sunday', 879]
+                ]);
+
+      var options = {
+        title: 'Day of the week activities',
+        pieHole: 0.4
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+      
+      
+      var data = google.visualization.arrayToDataTable([
+        ['Hour', 'Games per Hour']
+                    ,['0', 63]
+                    ,['1', 33]
+                    ,['01-09', 36]
+                    ,['09-13', 203]
+                    ,['13-16', 289]
+                    ,['17', 119]
+                    ,['18', 139]
+                    ,['19', 126]
+                    ,['20', 146]
+                    ,['21', 164]
+                    ,['22', 123]
+                    ,['23', 107]
+                ]);
+
+      var options = {
+        title: 'Weekend activities (hour, Moscow)',
+        pieHole: 0.4,
+        pieSliceText: 'label'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+      chart.draw(data, options);		
+      
+      
+      var data = google.visualization.arrayToDataTable([
+        ['Hour', 'Games per Hour']
+                    ,['0', 177]
+                    ,['1', 70]
+                    ,['01-09', 84]
+                    ,['09-13', 182]
+                    ,['13-16', 318]
+                    ,['17', 130]
+                    ,['18', 174]
+                    ,['19', 238]
+                    ,['20', 269]
+                    ,['21', 299]
+                    ,['22', 311]
+                    ,['23', 219]
+                ]);
+
+      var options = {
+        title: 'Weekday activities (hour, Moscow)',
+        pieHole: 0.4,
+        pieSliceText: 'label'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+      chart.draw(data, options);
+    }
+  </script>
+
+        </div>
+      </div><!--/span-->
+    </div><!--/row-->
+   </div>
+<div id="lg">
+    <div id="r">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>Site by Tretyak Yaroslav</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="f">
+        <div class="container">
+            <div class="row centered">
+                <a href="https://www.instagram.com/yar_tret/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.facebook.com/yar.tret.7/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.twitch.tv/aragonm"><i class="fa fa-twitch"></i></a>
+                <h3>Copyright © 2021-2021</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/vanta.net.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EURUS: Турніри по кіберспорту</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="img/logoEURUS.ico" type="images/x-icon">
+</head>
+<body>
+ <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-targer=".navbar-collapse">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="#"><img src="img/logoEURUS.png" width="130" style="position:absolute;top:5px" alt="logo" title="EURUS"></a>
+         </div>
+         <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href ="index.html">Головна</a></li>
+                 <li class="active"><a href ="#">Турніри</a></li>
+                 <li><a href ="players.html">Гравці</a></li>
+                 <li><a href ="teams.html">Команди</a></li>
+                 <li><a href ="about.html">Про проект</a></li>
+                 <li><a href ="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                 <li><a href ="registration.html">Реєстрація</a></li>
+                 <li><a href ="auth.html">Увійти</a></li>
+             </ul>
+         </div>
+     </div>
+ </div>
+
+ <div class="container container-body">
+    <div class="row">
+      <div class="span12">
+          
+      </div>
+    </div>
+    <div class="row">
+      
+               
+          <div class="span12">
+              
+        
+
+        <div> <!--hero-unit -->
+          
+<div id="system-message-container">
+</div>
+        </div>
+        <div>
+          
+<ul class="nav nav-tabs">
+<li class="active">
+  <a href="tournament.html">
+  <h1>Турніри</h1>
+  </a>
+</li> 
+</ul>  
+<form action="/tournaments" method="post" name="adminForm" id="adminForm">
+  <fieldset id="filter-bar">
+      <div class="filter-search fltlft">
+          <label class="filter-search-lbl" for="filter_search">Назва турніру	</label>
+          <input type="text" name="filter_search" id="filter_search" value="" title="Наименование" />
+
+          <button type="submit" class="btn">Шукати</button>
+          <button type="button" class="btn" onclick="document.id('filter_search').value='';this.form.submit();">Очистити</button>
+      </div>
+      <div class="filter-select fltrt">
+          <select name="filter_gamecategoryid" class="inputbox" onchange="this.form.submit()">
+              <option value="">Гра:</option>
+<option value="1">Dota 2</option>
+<option value="2">Rainbow six siege</option>
+<option value="3">CS:GO</option>
+
+          </select>
+                  </div>
+  </fieldset>
+  <div class="clr"> </div>
+
+<table class="adminlist table table-striped table-condensed">
+  <tr>
+      <td class="td200 tdcenter">
+           <img src="img/siege.jpg" alt="Турнір 5 на 5" />		</td>
+      <td>
+          <h2><a href="tour.html">Турнір 5 на 5</a></h2>
+          30.05.2021 - 02.06.2021			<br/>
+          Rainbow six siege			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/36149" target="_blank">AragonMerassa</a>, <a href="/component/comprofiler/userprofile/36184" target="_blank">Alastor</a>			<br/><br/>
+          <blockquote>
+          Турнір 5 на 5.
+Дати проведення 30.05-02.06.
+Реєстрація закінчиться 29.05.
+<small>AragonMerassa		</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-success labelbig">Реєстрація відкрита</div>			</td>			
+  </tr>
+  <tr>
+      <td class="td200 tdcenter">
+           <img src="img/cs.jpg" alt="CS:GO Ladder CUP #1" />		</td>
+      <td>
+          <h2><a href="tourCup.html">CS:GO Ladder CUP #1</a></h2>
+          01.06.2021 - 04.06.2021			<br/>
+          Counter-strike:Global offensive			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/99" target="_blank">AragonMerassa</a>			<br/><br/>
+          <blockquote>
+            Турнір 5 на 5.
+            Дати проведення 01.06-04.06.
+            Реєстрація закінчиться 29.05.<small>AragonMerassa			</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-info labelbig">Підтвердження участі</div>			</td>			
+  </tr>
+  <tr>
+      <td class="td200 tdcenter">
+           <img src="img/dota.jpg" alt="1v1 Ladder - Summer" />		</td>
+      <td>
+          <h2><a href="/zhladder-april">1v1 Ladder - Summer</a></h2>
+          25.05.2021 - 30.06.2021			<br/>
+          Dota 2			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/82" target="_blank">AragonMerassa</a>			<br/><br/>
+          <blockquote>
+          Вітаємо на Ладдері по Dota 2!  - Це змагання, яке триває весь календарний місяць, в якому визначається кращі гравці. <small>AragonMerassa		</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-success labelbig">Реєстрація відкрита</div>			</td>			
+  </tr>
+  <tr>
+      <td class="td200 tdcenter">
+           <img src="img/dota.jpg" alt="Франківський Турнір #1" />		</td>
+      <td>
+          <h2><a href="/cup1362">Франківський Турнір #1</a></h2>
+          24.05.2021 - 26.05.2021			<br/>
+          Dota 2			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/36064" target="_blank">AragonMerassa</a>, <a href="/component/comprofiler/userprofile/36059" target="_blank">Alastor</a>			<br/><br/>
+          <blockquote>
+          Турнір 5 на 5 по Dota 2.
+          В турнірі приймають участь зареєстровані команди.
+            <small>Alastor			</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-success labelbig">Турнір завершено</div>			</td>			
+  </tr>
+  <tr>
+      <td class="td200 tdcenter">
+        <img src="img/siege.jpg" alt="Тест" />        </td>
+      <td>
+          <h2><a href="/cup1364">Турнір по Rainbow six siege</a></h2>
+          14.05.2021 - 15.05.2021			<br/>
+          Rainbow six siege			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/36607" target="_blank">AragonMerassa</a>			<br/><br/>
+          <blockquote>
+          Турнір 5 на 5.
+          Приймають участь зареєстровані команди.<small>AragonMerassa			</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-success labelbig">Реєстрація закрита</div>			</td>			
+  </tr>
+  <tr>
+      <td class="td200 tdcenter">
+           <img src="img/cs.jpg" alt="2v2 Friendly Cup" />		</td>
+      <td>
+          <h2><a href="/cup1359">2v2 Friendly Cup </a></h2>
+          02.06.2021 - 02.06.2021			<br/>
+          CS:GO			<br/>
+          Організатори: <a href="/component/comprofiler/userprofile/36078" target="_blank">AragonMerassa</a>, <a href="/component/comprofiler/userprofile/36072" target="_blank">Alastor</a>			<br/><br/>
+          <blockquote>
+          Турнір 2 на 2 по CS:GO.<small>Alastor			</small>
+          </blockquote>
+                  </td>
+      <td class="tdmax140 tdcenter">
+          <div class="label label-success labelbig">Реєстрація закрита</div>			</td>			
+  </tr>
+  <tfoot>
+  <tr>
+      <td colspan="3">
+          <div class="joomla_container"><div class="pagination">
+
+<div class="limit">Кількість рядків:<select id="limit" name="limit" class="inputbox" size="1" onchange="this.form.submit()">
+  <option value="5">5</option>
+  <option value="10" selected="selected">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+  <option value="25">25</option>
+  <option value="30">30</option>
+</select>
+</div><div class="button2-right off"><div class="start"><span>На початок</span></div></div><div class="button2-right off"><div class="prev"><span>Назад</span></div></div>
+<div class="button2-left"><div class="page"><span>1</span><a href="#" title="2" onclick="document.adminForm.limitstart.value=20; Joomla.submitform();return false;">2</a>
+</div></div><div class="button2-left"><div class="next"><a href="#" title="Вперёд" onclick="document.adminForm.limitstart.value=20; Joomla.submitform();return false;">Вперед</a></div></div><div class="button2-left"><div class="end"><a href="#" title="В конец" onclick="document.adminForm.limitstart.value=240; Joomla.submitform();return false;">В кінець</a></div></div>
+<div class="limit">Сторінка 1 из 2</div>
+<input type="hidden" name="limitstart" value="0" />
+</div></div>		</td>
+  </tr>		
+  </tfoot>  
+</table>
+</form>
+        </div>
+        <div class="row">
+          <div class="span4">
+            
+          </div><!--/span-->
+          <div class="span4">
+            
+          </div><!--/span-->
+          <div class="span4">
+            
+          </div><!--/span-->
+        </div><!--/row-->
+        <div class="row">
+          <div class="span4">
+            
+          </div><!--/span-->
+          <div class="span4">
+            
+          </div><!--/span-->
+          <div class="span4">
+            
+          </div><!--/span-->
+        </div><!--/row--> 
+        <div class="row">
+          <div class="span12">
+            
+          </div><!--/span-->
+        </div><!--/row--> 
+      </div><!--/span-->
+    </div><!--/row-->
+   </div>
+  </div>
+
+<div id="lg1">
+    <div class="container">
+        <div class="row centered">
+            <h4>Трансляції</h4>
+            <iframe src="https://player.twitch.tv/?channel=aragonm&parent=yartretyak.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+        </div>
+    </div>
+    <div id="r">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>Site by Tretyak Yaroslav</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="f">
+        <div class="container">
+            <div class="row centered">
+                <a href="https://www.instagram.com/yar_tret/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.facebook.com/yar.tret.7/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.twitch.tv/aragonm"><i class="fa fa-twitch"></i></a>
+                <h3>Copyright © 2021-2021</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/vanta.net.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
